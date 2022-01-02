@@ -12,14 +12,10 @@ function FormikContainer () {
   const { name2, size, views } = selectedBirdName;
 
   function handleBirdSelection(setFieldValue: (field: string, value: any, shouldValidate: boolean) => void ) {
-    console.log(name2)
-    // console.log(selectedBirdName[selectedBirdName.length-1].name2)
     setFieldValue('selectOption', name2, false);
   }
 
   function handleBirdSizeSelection(setFieldValue: (field: string, value: any, shouldValidate: boolean) => void ) {
-    console.log(size)
-    // console.log(selectedBirdName[selectedBirdName.length-1].size)
     setFieldValue('selectBirdSizeOption', size, false);
   }
 
@@ -45,7 +41,7 @@ function FormikContainer () {
     selectOption: Yup.string().required('Required'),
     selectBirdSizeOption: Yup.string().required('Required'),
   })
-  const onSubmit = values => {
+  const onSubmit = (values: { selectOption: any; selectBirdSizeOption: any; }) => {
     dispatch(addBird(values.selectOption));
     dispatch(addBirdSize(values.selectBirdSizeOption));
   }
@@ -60,11 +56,17 @@ function FormikContainer () {
         <Form>
             {
               useEffect(() => {
-                if(selectedBirdName){
+                if(name2){
                   handleBirdSelection(setFieldValue);
+                }
+              }, [name2])
+            }
+            {
+              useEffect(() => {
+                if(size){
                   handleBirdSizeSelection(setFieldValue);
                 }
-              }, [selectedBirdName])
+              }, [size])
             }
             <br/>
           <FormikControl

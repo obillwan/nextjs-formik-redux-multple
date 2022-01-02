@@ -6,29 +6,15 @@ export function addBird(name2) {
       payload: {
         name2
       }
-      // bird,
     }
   }
 
-  // export const addBird = (name2) => (dispatch, getState) => {
-  //   try {
-  //     console.log(name2, getState());
-  //     dispatch({
-  //       type: ADD_BIRD,
-  //       payload: {
-  //         name2
-  //       },
-  //     });
-  //   } catch (error) {
-  //     console.log("Error", error);
-  //   }
-  // };
-    
-
 export function addBirdSize(size) {
-    return {
+  return {
       type: ADD_BIRD_SIZE,
-      size,
+      payload: {
+        size
+      }
     }
   }
 
