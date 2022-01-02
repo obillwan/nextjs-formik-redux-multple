@@ -3,21 +3,24 @@ import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import FormikControl from './FormikControl'
 import { useDispatch, useSelector } from 'react-redux';
-import { addBird } from '../../store/actions/birdAction2';
+import { addBird, addBirdSize } from '../../store/actions/birdAction2';
 import { RootState } from '../../store/store';
 
 function FormikContainer () {
   const dispatch = useDispatch();
   const selectedBirdName= useSelector((state: RootState)=> state.testBirds2);
+  const { name2, size, views } = selectedBirdName;
 
   function handleBirdSelection(setFieldValue: (field: string, value: any, shouldValidate: boolean) => void ) {
-    console.log(selectedBirdName[selectedBirdName.length-1].name2)
-    setFieldValue('selectOption', selectedBirdName[selectedBirdName.length-1].name2, false);
+    console.log(name2)
+    // console.log(selectedBirdName[selectedBirdName.length-1].name2)
+    setFieldValue('selectOption', name2, false);
   }
 
   function handleBirdSizeSelection(setFieldValue: (field: string, value: any, shouldValidate: boolean) => void ) {
-    console.log(selectedBirdName[selectedBirdName.length-1].size)
-    setFieldValue('selectBirdSizeOption', selectedBirdName[selectedBirdName.length-1].size, false);
+    console.log(size)
+    // console.log(selectedBirdName[selectedBirdName.length-1].size)
+    setFieldValue('selectBirdSizeOption', size, false);
   }
 
   const dropdownOptions = [
@@ -44,7 +47,7 @@ function FormikContainer () {
   })
   const onSubmit = values => {
     dispatch(addBird(values.selectOption));
-    dispatch(addBird(values.selectBirdSizeOption));
+    dispatch(addBirdSize(values.selectBirdSizeOption));
   }
 
   return (
