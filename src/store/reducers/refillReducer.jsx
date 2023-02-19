@@ -4,8 +4,8 @@ import {
 } from "../constants/refillConstants";
 
 const initialState = {
-  copayTotal: "10.50",
-  amount: 0,
+  copayTotalRedux: "10.50",
+  shippingAmountRedux: 0,
 };
 export const refillDetails = (state = initialState, action) => {
   switch (action.type) {
