@@ -3,19 +3,19 @@ import {
   ADD_COPAY_TOTAL,
 } from "../constants/refillConstants";
 
-export function addCopayTotal(copayTotal) {
+export function addCopayTotal(copayTotalRedux) {
   return {
     type: ADD_COPAY_TOTAL,
     payload: {
-      copayTotal,
+      copayTotalRedux,
     },
   };
 }
-export function addShippingAmt(amount) {
+export function addShippingAmt(shippingAmountRedux) {
   return {
     type: ADD_SHIPPING_AMT,
     payload: {
-      amount,
+      shippingAmountRedux,
     },
   };
 }

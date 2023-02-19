@@ -11,6 +11,7 @@ import {
 import { RootState } from "../../store/store";
 import RefillTable from "./RefillTable";
 import RefillTotal from "./RefillTotal";
+import { scripts1, scripts2 } from "./RefillUtils";
 
 function RefillContainer() {
   console.log("In RefillContainer");
@@ -18,24 +19,8 @@ function RefillContainer() {
   const selectedRefill = useSelector(
     (state: RootState) => state.testRefillReducer
   );
-  const { amount } = selectedRefill;
-  // const [localShippingAmount, setLocalShippingAmount] = useState(0);
-
-  let scripts = [
-    {
-      id: 1,
-      name: "John Smith",
-      copay: "15",
-      image: "john-smith.jpg",
-    },
-    {
-      id: 2,
-      name: "Jane Smith",
-      copay: "10",
-      image: "jane-smith.jpg",
-    },
-    // ...
-  ];
+  const { copayTotalRedux, shippingAmountRedux } = selectedRefill;
+  const [flagPage2, setFlagPage2] = useState(false);
 
   function getCopayTotal(scripts) {
     console.log("In getCopayTotal");
@@ -59,8 +44,8 @@ function RefillContainer() {
   ];
 
   let localSelectShippingAmtOption = 0;
-  if (amount) {
-    localSelectShippingAmtOption = amount;
+  if (shippingAmountRedux) {
+    localSelectShippingAmtOption = shippingAmountRedux;
   }
 
   const initialValues = {
@@ -78,9 +63,11 @@ function RefillContainer() {
     );
   };
 
-  const localCopayTotal = getCopayTotal(scripts);
+  const localCopayTotal = getCopayTotal(
+    flagPage2 === false ? scripts1 : scripts2
+  );
   const localTotalAmount = getTotalAmount(
-    getCopayTotal(scripts),
+    getCopayTotal(flagPage2 === false ? scripts1 : scripts2),
     localSelectShippingAmtOption
   );
 
@@ -89,13 +76,18 @@ function RefillContainer() {
       <Link href="/">
         <a>Go back</a>
       </Link>
-      <RefillTable scripts={scripts} />
+      <Link href="#">
+        <a onClick={(e) => setFlagPage2(false)}>Simiulate Page 1</a>
+      </Link>{" "}
+      <Link href="#">
+        <a onClick={(e) => setFlagPage2(true)}>Simiulate Page 2</a>
+      </Link>{" "}
+      <RefillTable scripts={flagPage2 === false ? scripts1 : scripts2} />
       <RefillTotal
         totalCopay={localCopayTotal}
         shippingAmount={localSelectShippingAmtOption}
         totalAmount={localTotalAmount}
       />
-
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
