@@ -6,7 +6,7 @@ export default function Home() {
     <>
       <h1>Home</h1>
       <h4>
-        <Link href="/refillPageContainer">
+        <Link legacyBehavior href="/refillPageContainer">
           <a>Open Refill Page Container</a>
         </Link>
       </h4>

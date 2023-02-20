@@ -13,13 +13,13 @@ export default function Home() {
         <FormikContainer2 />
         <br />
         3.
-        <Link href="../navSelectBirdAndSize">
+        <Link legacyBehavior href="../navSelectBirdAndSize">
           <a>Click here to go to other page</a>
         </Link>
         <br />
         <br />
         4.
-        <Link href="/">
+        <Link legacyBehavior href="/">
           <a>Click here to go back home</a>
         </Link> */}
       </h4>
