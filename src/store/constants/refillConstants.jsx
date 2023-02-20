@@ -1,0 +1,2 @@
+export const ADD_SHIPPING_AMT = "ADD_SHIPPING_AMT";
+export const ADD_COPAY_TOTAL = "ADD_COPAY_TOTAL";

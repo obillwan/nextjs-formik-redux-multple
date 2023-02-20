@@ -1,14 +1,15 @@
-import Link from 'next/link'
+import Link from "next/link";
 
 export default function Home() {
+  console.log("Hello world");
   return (
     <>
       <h1>Home</h1>
       <h4>
-        <Link href="/selectBirdAndSize">
-          <a>Open test with multiple selects</a>
+        <Link legacyBehavior href="/refillPageContainer">
+          <a>Open Refill Page Container</a>
         </Link>
       </h4>
-      </>
-  )
+    </>
+  );
 }
