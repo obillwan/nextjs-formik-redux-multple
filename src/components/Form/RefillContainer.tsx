@@ -73,13 +73,15 @@ function RefillContainer() {
 
   return (
     <div>
-      <Link href="/">
+      <Link legacyBehavior href="/">
         <a>Go back</a>
       </Link>
-      <Link href="#">
+      {" | "}
+      <Link legacyBehavior href="#">
         <a onClick={(e) => setFlagPage2(false)}>Simiulate Page 1</a>
-      </Link>{" "}
-      <Link href="#">
+      </Link>
+      {" | "}
+      <Link legacyBehavior href="#">
         <a onClick={(e) => setFlagPage2(true)}>Simiulate Page 2</a>
       </Link>{" "}
       <RefillTable scripts={flagPage2 === false ? scripts1 : scripts2} />
